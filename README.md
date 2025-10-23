@@ -74,6 +74,11 @@ Start the development server:
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
+Or use the provided run script:
+```bash
+python run.py
+```
+
 ### Using Docker Compose
 
 ```bash
@@ -81,6 +86,34 @@ docker-compose up
 ```
 
 The API will be available at `http://localhost:8000`.
+
+## Database Migrations
+
+This project uses Alembic for database schema migrations.
+
+### Create a new migration
+
+```bash
+alembic revision --autogenerate -m "Description of migration"
+```
+
+### Apply migrations
+
+```bash
+alembic upgrade head
+```
+
+### Rollback migrations
+
+```bash
+alembic downgrade -1
+```
+
+### View migration history
+
+```bash
+alembic history
+```
 
 ## API Documentation
 
@@ -135,6 +168,10 @@ oss-health-monitor/
 │   └── workflows/          # GitHub Actions workflows
 │       ├── ci.yml          # CI pipeline (lint, test)
 │       └── docker.yml      # Docker build workflow
+├── alembic/
+│   ├── versions/           # Database migration scripts
+│   ├── env.py              # Alembic environment configuration
+│   └── script.py.mako      # Migration script template
 ├── app/
 │   ├── __init__.py
 │   ├── main.py             # FastAPI application entry point
@@ -150,11 +187,13 @@ oss-health-monitor/
 │   └── test_health.py      # Health endpoint tests
 ├── .env.example            # Example environment variables
 ├── .gitignore              # Git ignore rules
+├── alembic.ini             # Alembic configuration
 ├── docker-compose.yml      # Docker Compose configuration
 ├── Dockerfile              # Docker image definition
 ├── pyproject.toml          # Project metadata and tool configs
 ├── requirements.txt        # Production dependencies
 ├── requirements-dev.txt    # Development dependencies
+├── run.py                  # Application run script
 └── README.md               # This file
 ```
 
