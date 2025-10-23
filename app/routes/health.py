@@ -14,7 +14,7 @@ router = APIRouter()
 @router.get("/health")
 async def health_check() -> dict[str, str]:
     """Basic health check endpoint."""
-    return {"status": "healthy", "service": "oss-health-monitor"}
+    return {"status": "healthy"}
 
 
 @router.get("/health/db")
@@ -26,13 +26,11 @@ async def database_health_check(db: Session = Depends(get_db)) -> dict[str, Any]
         result.fetchone()
         return {
             "status": "healthy",
-            "service": "oss-health-monitor",
             "database": "connected",
         }
     except Exception as e:
         return {
             "status": "unhealthy",
-            "service": "oss-health-monitor",
             "database": "disconnected",
             "error": str(e),
         }

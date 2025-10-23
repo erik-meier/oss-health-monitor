@@ -9,7 +9,6 @@ def test_health_check(client: TestClient):
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["service"] == "oss-health-monitor"
 
 
 def test_database_health_check(client: TestClient):
@@ -18,5 +17,4 @@ def test_database_health_check(client: TestClient):
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["service"] == "oss-health-monitor"
     assert data["database"] == "connected"
