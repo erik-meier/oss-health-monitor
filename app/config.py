@@ -26,6 +26,16 @@ class Settings(BaseSettings):
     # CORS settings
     cors_origins: list[str] = ["http://localhost:3000", "http://localhost:8000"]
 
+    # GitHub settings
+    github_token: str = ""  # GitHub personal access token for API access
+
+    # Scanner settings
+    osv_scanner_path: str = "osv-scanner"  # Path to osv-scanner binary
+
+    # Cache settings
+    scan_cache_ttl_hours: int = 12  # Cache scan results for 12 hours
+    scan_cache_max_size: int = 1000  # Maximum number of cached scan results
+
 
 @lru_cache()
 def get_settings() -> Settings:
