@@ -4,6 +4,8 @@
 
 This is a FastAPI-based service for scanning GitHub repositories for security vulnerabilities and tracking dependency health metrics over time. The service integrates with Google OSV Scanner and GitHub Security Advisory Database to detect vulnerabilities and generates time-series health metrics.
 
+**Development Status**: Pre-initial release. Backwards compatibility is NOT required - feel free to make breaking changes to improve the codebase architecture, APIs, and database schema as needed.
+
 ## Architecture
 
 ### Tech Stack
@@ -165,6 +167,8 @@ pytest-watch
 ```
 
 ### Database Operations
+
+**Automatic Initialization**: The application automatically creates database tables on startup.
 
 ```bash
 # Create migration

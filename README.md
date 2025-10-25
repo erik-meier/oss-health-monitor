@@ -70,6 +70,13 @@ cp .env.example .env
    - Update `DATABASE_URL` if needed
    - Set `OSV_SCANNER_PATH` if OSV Scanner is not in your PATH
 
+7. Create an API key:
+```bash
+python scripts/manage_api_keys.py create "My API Key"
+```
+
+> **Note**: The database will be automatically initialized when the application starts.
+
 ### Using Docker Compose
 
 1. Clone the repository:
